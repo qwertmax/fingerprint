@@ -1,0 +1,27 @@
+!!!
+%html{"ng-app" => "FP"}
+  %head
+    %title
+      McKS FP
+    = stylesheet_link_tag    'application', :media => 'all'
+    = javascript_include_tag 'application'
+    = csrf_meta_tags
+
+  %body
+
+    .navbar.navbar-inverse.navbar-top{role:"navigation"}
+      .container
+        .navbar-header
+          %button.navbar-toggle{type:"button", data:{toggle:"collapse", target:".navbar-collapse"}}
+            %span.sr-only Toggle navigation
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          =link_to "McKS FP", root_path, :class => "navbar-brand"
+
+    .container{ :"ng-view" => "" }
+      = yield
+
+    .angular_partials
+      %script{ :type => "text/ng-template", :id => "sitelist.ngt"}
+        = render :partial => "partials/sitelist"

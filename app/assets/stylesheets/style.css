@@ -1,0 +1,9 @@
+#content { width: 95%;}
+#fingerprint { width: 90%;}
+table {height: auto;}
+
+.fingerprint-value .value { font-weight: bold; }
+
+.name {width: 20%;}
+.long-value { width: 80%; word-break: break-all; overflow: hidden; }
+.long-value div {height: 35px;}

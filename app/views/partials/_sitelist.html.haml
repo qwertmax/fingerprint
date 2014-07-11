@@ -1,0 +1,30 @@
+.row
+  .navbar-form.navbar-right
+    %input{ :"ng-hide" => "!sites.length", :type => "search", :"ng-model" => "query", :class => "form-control", :placeholder => "filter sites..." }
+
+.row
+  .pull-right
+    Total visits tracked:
+    {{ sites.length | filter:query  }}
+
+%div{ :"ng-controller" => "ListCtrl" }
+  %table.table
+    %thead
+      %tr
+        %th FP
+        %th SiteName
+        %th URI
+        %th Date
+    %tbody{ :"ui:sortable" => "sortableOptions", :"ng:model" => "sites" }
+      %tr{ :"ng-repeat" => "site in sites | filter:query | orderBy:'fp'" }
+        %td.uid
+          {{ site.fp }}
+        %td.name
+          {{ site.sitename }}
+        %td.uri
+          {{ site.uri }}
+        %td.date
+          {{ site.updated_at }}
+
+  %a{ "ng-click" => "loadMore()" }
+    Load more
